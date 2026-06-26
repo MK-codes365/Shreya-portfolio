@@ -38,7 +38,6 @@ import {
   textureLoader,
 } from '~/utils/three';
 import { ModelAnimationType } from './device-models';
-import { throttle } from '~/utils/throttle';
 import styles from './model.module.css';
 
 const MeshType = {
@@ -281,7 +280,7 @@ export const Model = ({
 
   // Handle mouse move animation
   useEffect(() => {
-    const onMouseMove = throttle(event => {
+    const onMouseMove = event => {
       const { innerWidth, innerHeight } = window;
 
       const position = {
@@ -291,7 +290,7 @@ export const Model = ({
 
       rotationY.set(position.x / 2);
       rotationX.set(position.y / 2);
-    }, 100);
+    };
 
     if (isInViewport && !reduceMotion) {
       window.addEventListener('mousemove', onMouseMove);

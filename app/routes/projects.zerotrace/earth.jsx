@@ -639,16 +639,14 @@ export const Earth = ({
   ]);
 
   useEffect(() => {
-    const throttledScroll = throttle(handleScroll, 100);
-
     if (loaded && inViewport) {
-      window.addEventListener('scroll', throttledScroll);
+      window.addEventListener('scroll', handleScroll);
     }
 
     return () => {
-      window.removeEventListener('scroll', throttledScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, [handleScroll, inViewport, loaded, opacitySpring]);
+  }, [handleScroll, inViewport, loaded]);
 
   const registerSection = useCallback(section => {
     sectionRefs.current = [...sectionRefs.current, section];

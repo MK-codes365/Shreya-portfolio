@@ -1,0 +1,152 @@
+.techStackSection {
+  width: 100vw;
+  min-height: 80vh;
+  margin-top: 60px;
+  margin-bottom: 40px;
+  padding-top: 60px;
+  padding-bottom: 40px;
+  display: flex;
+  justify-content: center;
+
+  @media (--mediaTablet) {
+    padding-top: 50px;
+    padding-right: 80px;
+    padding-left: 160px;
+    height: auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+
+  @media (--mediaMobile) {
+    margin-top: 0;
+    padding-top: var(--space4XL);
+    overflow-x: hidden;
+  }
+
+  @media (--mediaMobile), (--mediaMobileLS) {
+    padding-right: var(--spaceOuter);
+    padding-left: var(--spaceOuter);
+  }
+}
+
+.content {
+  max-width: var(--maxWidthL);
+  width: 100%;
+}
+
+.column {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.tag {
+  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: var(--space4XL) 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.tagText {
+  font-size: var(--fontSizeBodyS);
+  font-weight: var(--fontWeightMedium);
+  color: var(--primary);
+  opacity: 0;
+  transition-property: opacity;
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-duration: var(--durationM);
+  transition-delay: 1s;
+
+  &[data-visible='true'] {
+    opacity: 1;
+  }
+}
+
+.title {
+  white-space: nowrap;
+  margin-bottom: var(--spaceXL);
+  opacity: 0;
+  transition: opacity var(--durationXL) ease var(--durationM);
+
+  &[data-visible='true'] {
+    opacity: 1;
+  }
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--spaceL);
+  width: 100%;
+  margin-top: var(--spaceL);
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (--mediaTablet) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (--mediaMobile) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spaceS);
+  }
+}
+
+.techItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spaceL);
+  background: var(--backgroundLight);
+  border: 1px solid color-mix(in lab, var(--text) 12%, transparent);
+  border-radius: 8px;
+  transition: all var(--durationS) ease, opacity var(--durationXL) ease, transform var(--durationXL) var(--bezierFastoutSlowin);
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+
+  &[data-visible='true'] {
+    opacity: 1;
+    transform: none;
+  }
+
+  &:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px) !important;
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.techIcon {
+  width: 48px;
+  height: 48px;
+  fill: var(--textBody);
+  color: var(--textBody);
+  margin-bottom: var(--spaceM);
+  transition: all var(--durationS) ease;
+}
+
+.techItem:hover .techIcon {
+  fill: var(--hover-color);
+  color: var(--hover-color);
+  transform: scale(1.1);
+}
+
+.techName {
+  font-size: var(--fontSizeBodyM);
+  font-weight: var(--fontWeightMedium);
+  color: var(--textBody);
+  text-align: center;
+  transition: color var(--durationS) ease;
+}
+
+.techItem:hover .techName {
+  color: var(--textTitle);
+}
